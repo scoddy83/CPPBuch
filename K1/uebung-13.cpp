@@ -6,34 +6,28 @@ using namespace std;
 
 
 int main () {
-  const int kleinsteZahl {-99};
-  const int groessteZahl {100};
-  int zahl {0};
-  int temp;
+  const int MINIMUM {-99};
+  const int MAXIMUM {100};
+  const int INTERVALL {10};
+  const int INTERVALBREITE {(MAXIMUM - MINIMUM + 1) / INTERVALL};
+  int eingabe {0};
 
-  vector<int> intervalle(200/10);
+  vector<int> intervalle(INTERVALL);
 
-  cout << "Bitte gebe eine Zahl zwischen " << kleinsteZahl << " und " << groessteZahl << " an\n";
+  cout << "Bitte gebe eine Zahl zwischen " << MINIMUM << " und " << MAXIMUM << " an\n";
   cout << "Um zu Beenden gebe eine Zahl ausserhalb des bereichs an\n";
 
-  while (zahl >= kleinsteZahl && zahl <= groessteZahl) {
+  while (eingabe >= MINIMUM && eingabe <= MAXIMUM) {
     cout << "Neue Zahl :  ";
-    cin >> zahl;
-    temp = kleinsteZahl;
-
-    for (int i = 0; i < 200/10; i++) {
-      if(zahl >= temp && zahl < temp+10) {
-          intervalle[i] += 1;
-      }
-      temp += 10;
-    }
+    cin >> eingabe;
+    intervalle[(eingabe-MINIMUM)/INTERVALBREITE]++;
   }
 
   cout << "Ausgabe je Intervall: \n";
-  zahl = kleinsteZahl;
 
-  for (int i = 0; i < intervalle.size(); i++) {
-    cout << "Intervall von " << zahl << " bis " << zahl + 10 << " : " << intervalle[i] << '\n';
-    zahl += 10;
+  for (int i = 0; i < INTERVALL; i++) {
+    cout << "Intervall von " << i * INTERVALBREITE +  MINIMUM << " : "
+         << (i + 1) * INTERVALBREITE +  MINIMUM - 1 << " : " << intervalle[i]
+         << '\n';
   }
 }
