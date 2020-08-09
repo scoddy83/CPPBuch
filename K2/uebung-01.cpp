@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 //CPPBuch/K2/Übung 2.1
+=======
+>>>>>>> d384c999a9bd03917768e09dff4461c4af8c1766
 #include <iostream>
 using namespace std;
 
