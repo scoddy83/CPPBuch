@@ -1,0 +1,8 @@
+Ausgabe in wofstream: ÄÖÜäöüß
+WZeichen 0: Ä
+WZeichen 1: Ö
+WZeichen 2: Ü
+WZeichen 3: ä
+WZeichen 4: ö
+WZeichen 5: ü
+WZeichen 6: ß

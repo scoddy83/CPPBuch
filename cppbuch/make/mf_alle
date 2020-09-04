@@ -1,0 +1,23 @@
+CPPBUCH_HOME=$(subst /make/mf_alle,,$(lastword $(MAKEFILE_LIST)))
+# Compiliert alle .cpp-Dateien im aktuellen Verzeichnis, und zwar
+# jede fuer sich, d.h. jede Datei muss eine main-Funktion enthalten
+INCLUDE := -I$(CPPBUCH_HOME)/include
+include $(CPPBUCH_HOME)/make/einstellungen.mak
+
+EXES := $(patsubst %.cpp,%.exe,$(wildcard *.cpp))
+HEADERS := $(wildcard *.h)
+TEMPLATES := $(wildcard *.t)
+.PHONY: clean alles
+
+alles: $(EXES)
+
+%.exe : %.o 
+	-$(CXX) -o $@  $< $(LDFLAGS)
+
+%.o : %.cpp  $(HEADERS) $(TEMPLATES)
+	-$(CXX) $(CXXFLAGS) $(INCLUDE) $< -o $@
+
+clean:
+	$(RM) $(EXES) *.o
+
+

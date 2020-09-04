@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.0)
+set(CMAKE_C_COMPILER "gcc")
+set(CMAKE_CXX_COMPILER "g++")
+cmake_policy(SET CMP0015 NEW)
+project (anw)
+add_subdirectory (libprojekt)
+add_subdirectory (anwendung)
